@@ -15,6 +15,7 @@ public class Main extends Application {
 
         System.out.println("Nice job Team One!");
 
+        Login_GUI run = new Login_GUI();
 
         Bruger.insertBrugerData();
 
