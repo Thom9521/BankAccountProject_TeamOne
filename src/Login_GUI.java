@@ -3,90 +3,82 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Login_GUI {
-    //declare the frame/window
+    //Declare the frame/window
     private JFrame frame;
-
-    //declare user text field
+    //Declare user text field
     private JTextField userNameField;
-
-    //declare password field
+    //Declare password field
     private JPasswordField passwordField;
+    //Declare user label
+    private JLabel userNameLabel;
+    //Declare password label
+    private JLabel passwordLabel;
+    //Declare connect button
+    private JButton btnConnect;
 
-    //declare user label
-    private JLabel userNameLbl;
-
-    //declare password label
-    private  JLabel passwordLbl;
-
-    //declare connect button
-    private  JButton btnConnect;
-
-    //constructor
+    //Constructor
 
     public Login_GUI() {
         initialize();
     }
-    //the initialize method that builds the windows
-    private void initialize() {
 
-        //creates the frame/windows
+    //The initialize method that builds the window
+    private void initialize() {
+        //Creates the frame/window
         frame = new JFrame("Login Window");
-        frame.setBounds(500,500, 450, 300);
+        frame.setBounds(500, 500, 450, 300);
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
 
-        //create user field
+        //Create user field
         userNameField = new JTextField();
-        userNameField.setBounds(156,56,203,26);
+        userNameField.setBounds(156, 56, 203, 26);
         frame.getContentPane().add(userNameField);
         userNameField.setColumns(10);
 
-        //create the password field
+        //Create password field
         passwordField = new JPasswordField();
         passwordField.setEchoChar('*');
-        passwordField.setBounds(156,107,203,26);
+        passwordField.setBounds(156, 107, 203, 26);
         frame.getContentPane().add(passwordField);
 
-        //create user label
-        userNameLbl = new JLabel("User Name:");
-        userNameLbl.setBounds(57,61,87,16);
-        frame.getContentPane().add(userNameLbl);
+        //Create user label
+        userNameLabel = new JLabel("Username:");
+        userNameLabel.setBounds(57, 61, 87, 16);
+        frame.getContentPane().add(userNameLabel);
 
-        //create password label
-        passwordLbl = new JLabel("Password:");
-        passwordLbl.setBounds(63,112,70,16);
-        frame.getContentPane().add(passwordLbl);
+        //Create password label
+        passwordLabel = new JLabel("Password:");
+        passwordLabel.setBounds(63, 112, 70, 16);
+        frame.getContentPane().add(passwordLabel);
 
-        //create connect button
-
+        //Create connect button
         btnConnect = new JButton("Connect");
-        btnConnect.setBounds(148,172,117,29);
+        btnConnect.setBounds(148, 172, 117, 29);
         frame.getContentPane().add(btnConnect);
 
-        //create button action
+        //Create button action
         btnConnect.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DB_Statements stmts = new DB_Statements();
-                try{
+                try {
                     String username = userNameField.getText();
                     String password = new String(passwordField.getPassword());
-                    if (stmts.checklogin(username, password)){
-                        JOptionPane.showMessageDialog(null,"User Found\nAcess Granted");
-                    }else {
-                        JOptionPane.showMessageDialog(null, "User Not Found or wrong password\nAccess Denied");
+                    if (stmts.checkLogin(username, password)) {
+                        JOptionPane.showMessageDialog(null, "User found\nAccess granted");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "User or password is incorrect" +
+                                "\nAccess denied");
                     }
-                }
-                catch (Exception e1) {
-                    JOptionPane.showMessageDialog(null,e1);
+                } catch (Exception e1) {
+                    JOptionPane.showMessageDialog(null, e1);
                 }
             }
         });
+
         frame.setVisible(true);
-
-
-
     }
 
-}
 
+}
