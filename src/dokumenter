@@ -27,6 +27,3 @@ on person_id = id
 order by id;
 
 
-(En start på overførsel)
-Update konto set saldo = saldo + 500 where konto_nr = 582102093;
-Update konto set saldo = saldo - 500 where konto_nr = 697564654;

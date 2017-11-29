@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class Login_GUI {
     //Declare the frame/window
@@ -62,6 +63,8 @@ public class Login_GUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DB_Statements stmts = new DB_Statements();
+
+
                 try {
                     String username = userNameField.getText();
                     String password = new String(passwordField.getPassword());

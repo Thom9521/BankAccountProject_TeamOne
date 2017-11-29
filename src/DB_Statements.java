@@ -43,10 +43,10 @@ public class DB_Statements {
             rs = stmt.executeQuery(query);
             while(rs.next()){
                 check = true;
-                System.out.println("\n--IT WORKS!!!!!!!");
+                System.out.println("\n--Du er nu logget ind--");
             }
         } catch (SQLException e) {
-            System.out.println("\n--IT DOESN'T WORK");
+            System.out.println("\n--Afvist");
             e.printStackTrace();
         }
         return check;
