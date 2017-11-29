@@ -15,17 +15,16 @@ public class Main extends Application {
 
         System.out.println("Nice job Team One!");
 
-        Login_GUI run = new Login_GUI();
+        //Login_GUI run = new Login_GUI();
 
-        Bruger.insertBrugerData();
+        //Bruger.insertBrugerData();
 
-        Konto.insertKontoData();
+        //Konto.insertKontoData();
 
+        //Konto saldo = new Konto();
+        //saldo.insertSaldoData();
 
-        Konto saldo = new Konto();
-        saldo.insertSaldoData();
-
-        saldo.insertMoney();
+        //saldo.insertMoney();
 
 
         // Afslutter programmet efter testen er kørt
