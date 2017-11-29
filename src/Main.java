@@ -18,14 +18,14 @@ public class Main extends Application {
 
         //Login_GUI run = new Login_GUI();
 
-        Bruger.insertBrugerData();
+        //Bruger.insertBrugerData();
 
-        Konto.insertKontoData();
+        //Konto.insertKontoData();
 
-        Konto saldo = new Konto();
-        saldo.insertSaldoData();
+        //Konto saldo = new Konto();
+        //saldo.insertSaldoData();
 
-        saldo.insertMoney();
+        //saldo.insertMoney();
 
         EndOfDay.backup();
 

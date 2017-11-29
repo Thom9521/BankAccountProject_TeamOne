@@ -1,10 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Date;
 
 public class EndOfDay {
@@ -28,19 +25,11 @@ public class EndOfDay {
             PrintWriter output = new PrintWriter(file);
         ) {
             // Initialiserer varibler der skal bruges
-            String sql;
-            int hentetPerson_id;
-            String hentetFnavn;
-            String hentetLnavn;
-            String hentetAdresse;
-            String hentetKonto_type;
-            int hentetReg_nr;
-            int hentetKonto_nr;
-            int hentetRentesats;
-            int hentetSaldo;
-            int hentetOvertraeksgebyr;
-            String hentetOvertraeks;
-            int hentetId;
+            String sql, hentetFnavn, hentetLnavn, hentetAdresse, hentetKonto_type, hentetOvertraeks, hentetUsername;
+            int hentetPerson_id, hentetReg_nr, hentetKonto_nr, hentetRentesats, hentetSaldo, hentetOvertraeksgebyr, hentetId, hentetFra_Konto, hentetTil_Konto, hentetPassword;
+            double hentetTrukketbelob, hentetIndfortbelob;
+            Timestamp hentetTimestamp;
+
 
             output.println("Person_id \t\t fnavn \t\t lnavn \t\t adresse");
             output.println("------------------------------------------------");
@@ -58,7 +47,7 @@ public class EndOfDay {
             }
 
             output.println();
-            output.println("Konto_type \t\t reg_nr \t\\t konto_nr \t\t rentesats \t\t saldo \t\t overtraeksgebyr \t\t overtraek \t\t id");
+            output.println("Konto_type \t\t reg_nr \t\t konto_nr \t\t rentesats \t\t saldo \t\t overtraeksgebyr \t\t overtraek \t\t id");
             output.println("------------------------------------------------------------------------------------------------------------------------------------");
 
             // Henter konto tabelen
@@ -77,7 +66,40 @@ public class EndOfDay {
                 output.print(hentetKonto_type + "\t\t" + hentetReg_nr + "\t\t" + hentetKonto_nr + "\t\t" + hentetRentesats + "\t\t" + hentetSaldo + "\t\t" + hentetOvertraeksgebyr + "\t\t" + hentetOvertraeks + "\t\t" + hentetId + "\n");
             }
 
+            output.println();
+            output.println("id \t\t Fra_Konto \t\t Trukketbeløb \t\t Til_kontoNr \t\t Indførtbeløb \t\t Timestamp");
+            output.println("------------------------------------------------------------------------------------------------------------------------------------");
+
+            // Henter transactioner tabelen
+            stmt = con.createStatement();
+            sql = "SELECT * FROM transactioner";
+            rs = stmt.executeQuery(sql);
+            while (rs.next())   { // Indsætter rækkerne fra transactioner tabelen ind i tekstfilen
+                hentetId = rs.getInt(1);
+                hentetFra_Konto = rs.getInt(2);
+                hentetTrukketbelob = rs.getDouble(3);
+                hentetTil_Konto = rs.getInt(4);
+                hentetIndfortbelob = rs.getDouble(5);
+                hentetTimestamp = rs.getTimestamp(6);
+                output.print(hentetId + "\t\t" + hentetFra_Konto + "\t\t" + hentetTrukketbelob + "\t\t" + hentetTil_Konto + "\t\t" + hentetIndfortbelob + "\t\t" + hentetTimestamp + "\n");
+            }
+
+            output.println();
+            output.println("username \t\t password");
+            output.println("------------------------------------------------------------------------------------------------------------------------------------");
+
+            // Henter login tabelen
+            stmt = con.createStatement();
+            sql = "SELECT * FROM login";
+            rs = stmt.executeQuery(sql);
+            while (rs.next())   { // Indsætter rækkerne fra login tabelen ind i tekstfilen
+                hentetUsername = rs.getNString(1);
+                hentetPassword = rs.getInt(2);
+                output.print(hentetUsername + "\t\t" + hentetPassword + "\n");
+            }
+
         }
+        System.out.println("End Of Days backup successful!");
     }
 
 }
