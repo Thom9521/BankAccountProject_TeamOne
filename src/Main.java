@@ -37,8 +37,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        // Laver et objekt af klassen ÅbenVindue
-        //ÅbenVindue åbenVindue = new ÅbenVindue();
+        // Laver et objekt af klassen AAbenVindue
+        //AAbenVindue åbenVindue = new AAbenVindue();
 
 
         //åbenVindue.kontonavnGUI(primaryStage);

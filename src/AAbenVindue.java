@@ -5,9 +5,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ÅbenVindue {
+public class AAbenVindue {
 
-    public ÅbenVindue() {
+    public AAbenVindue() {
     }
 
     // Metode til at kalde på kontonavnGUI vinduet
