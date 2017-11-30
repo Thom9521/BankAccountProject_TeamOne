@@ -13,7 +13,7 @@ public class DB_Connector {
     //  User name
     private static String user = "root";
     // Password
-    private static String password = "12345678";
+    private static String password = "8305";
 
     public static Connection connect() {
         System.out.println("\n--Connecting to MySQL JDBC--");
