@@ -37,13 +37,13 @@ public class AAbenVindue {
     public void lønKonto(Stage primaryStage) {
         try {
             // Indlæser LønKonto.fxml fil
-            Parent root = FXMLLoader.load(getClass().getResource("GUI/LønKonto.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("GUI/LoenKonto.fxml"));
 
             // Laver en scene med FXML filen
             Scene scene = new Scene(root);
 
             // Sætter vinduet titel til Kontoejer
-            primaryStage.setTitle("Løn Konto");
+            primaryStage.setTitle("Loen Konto");
             // Sætter scenen
             primaryStage.setScene(scene);
             // Viser den
@@ -60,13 +60,13 @@ public class AAbenVindue {
     public void bankrådgiver(Stage primaryStage) {
         try {
             // Indlæser BankrådgiverScreen_System_2.fxml fil
-            Parent root = FXMLLoader.load(getClass().getResource("GUI/BankrådgiverScreen_System_2.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("GUI/BankraadgiverScreen_System_2.fxml"));
 
             // Laver en scene med FXML filen
             Scene scene = new Scene(root);
 
             // Sætter vinduet titel til Kontoejer
-            primaryStage.setTitle("Bank rådgiver");
+            primaryStage.setTitle("Bank raadgiver");
             // Sætter scenen
             primaryStage.setScene(scene);
             // Viser den
