@@ -4,6 +4,10 @@ import java.io.PrintWriter;
 import java.sql.*;
 import java.util.Date;
 
+/**
+ * EndOfDay klassen bruges til at dokumentere vores database. Ved hjaelp af den ekstra mappe "End of Days" ses
+ * vores logfiler.
+ */
 public class EndOfDay {
 
     static Connection con = DB_Connector.connect();

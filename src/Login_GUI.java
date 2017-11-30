@@ -5,6 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
+/**
+ * Login_GUI indeholder vores beskrivels af design af GUI'en.
+ */
 public class Login_GUI {
     //Declare the frame/window
     private JFrame frame;
