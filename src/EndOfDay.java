@@ -67,7 +67,7 @@ public class EndOfDay {
             }
 
             output.println();
-            output.println("id \t\t Fra_Konto \t\t Trukketbeloeb \t\t Til_kontoNr \t\t Indfoertbeloeb \t\t Timestamp");
+            output.println("id \t\t Fra_Konto \t\t Trukketbeløb \t\t Til_kontoNr \t\t Indførtbeløb \t\t Timestamp");
             output.println("------------------------------------------------------------------------------------------------------------------------------------");
 
             // Henter transactioner tabelen
