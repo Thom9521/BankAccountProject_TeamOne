@@ -27,7 +27,7 @@ public class Main extends Application {
 
         //saldo.insertMoney();
 
-        EndOfDay.backup();
+        //EndOfDay.backup();
 
         // Afslutter programmet efter testen er kørt
         System.exit(0);

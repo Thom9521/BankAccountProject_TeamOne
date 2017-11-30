@@ -7,6 +7,9 @@ import javafx.scene.control.TextField;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
+/** Controller-klassen bruges til at sætte funktioner og metoder på vores GUI.
+ * I det hele taget så gør Controller-klassen at vores GUI'er får nogle funktioner.
+ */
 public class Controller {
 
     @FXML
@@ -24,7 +27,9 @@ public class Controller {
     @FXML
     private TableView tableView;
 
-
+    /** Når vores knapper fra vores GUI går ind og læser den her metoden, så vil de få en action.
+     * @param e er et objekt som metoden bruger til at kalde på andre metoden, som fx e.getSource()
+     */
     @FXML
     private void handleButtonAction(javafx.event.ActionEvent e) {
         int beloeb; //det indtastede beløb i textfield
