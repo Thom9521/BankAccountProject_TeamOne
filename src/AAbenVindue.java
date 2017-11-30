@@ -13,15 +13,15 @@ public class AAbenVindue {
     // Metode til at kalde på kontonavnGUI vinduet
     public void kontonavnGUI(Stage primaryStage) {
         try {
-            // Indlæser KontonavnGUI.fxml fil
+            // Indlaeser KontonavnGUI.fxml fil
             Parent root = FXMLLoader.load(getClass().getResource("GUI/KontonavnGUI.fxml"));
 
             // Laver en scene med FXML filen
             Scene scene = new Scene(root);
 
-            // Sætter vinduet titel til Kontoejer
+            // Saetter vinduet titel til Kontoejer
             primaryStage.setTitle("Kontoejer");
-            // Sætter scenen
+            // Saetter scenen
             primaryStage.setScene(scene);
             // Viser den
             primaryStage.show();
@@ -33,18 +33,18 @@ public class AAbenVindue {
         }
     }
 
-    // Metode til at kalde på LønKonto vinduet
+    // Metode til at kalde på LoenKonto vinduet
     public void lønKonto(Stage primaryStage) {
         try {
-            // Indlæser LønKonto.fxml fil
+            // Indlaeser LoenKonto.fxml fil
             Parent root = FXMLLoader.load(getClass().getResource("GUI/LoenKonto.fxml"));
 
             // Laver en scene med FXML filen
             Scene scene = new Scene(root);
 
-            // Sætter vinduet titel til Kontoejer
+            // Saetter vinduet titel til Kontoejer
             primaryStage.setTitle("Loen Konto");
-            // Sætter scenen
+            // Saetter scenen
             primaryStage.setScene(scene);
             // Viser den
             primaryStage.show();
@@ -59,15 +59,15 @@ public class AAbenVindue {
     // Metode til at kalde på bankrådgiver vinduet
     public void bankrådgiver(Stage primaryStage) {
         try {
-            // Indlæser BankrådgiverScreen_System_2.fxml fil
+            // Indlaeser BankrådgiverScreen_System_2.fxml fil
             Parent root = FXMLLoader.load(getClass().getResource("GUI/BankraadgiverScreen_System_2.fxml"));
 
             // Laver en scene med FXML filen
             Scene scene = new Scene(root);
 
-            // Sætter vinduet titel til Kontoejer
+            // Saetter vinduet titel til Kontoejer
             primaryStage.setTitle("Bank raadgiver");
-            // Sætter scenen
+            // Saetter scenen
             primaryStage.setScene(scene);
             // Viser den
             primaryStage.show();
