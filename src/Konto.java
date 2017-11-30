@@ -74,7 +74,7 @@ public class Konto {
             int reg_nr = input.nextInt();
             int konto_nr = input.nextInt();
             String query = "UPDATE konto set saldo = saldo + " + beloeb + " where konto_nr = " + konto_nr;
-            String query3 = "Insert into transactioner (Til_kontoNr, Indfoertbeloeb) values " +
+            String query3 = "Insert into transactioner (Til_kontoNr, Indførtbeløb) values " +
                     "("+ konto_nr+","+ beloeb+")";
 
             try {
@@ -100,7 +100,7 @@ public class Konto {
             int reg_nr2 = input.nextInt();
             int konto_nr2 = input.nextInt();
             String query2 = "UPDATE konto set saldo = saldo - " + beloeb + " where konto_nr = " + konto_nr2;
-            String query3 = "Insert into transactioner (Fra_Konto, Trukketbeloeb) values " +
+            String query3 = "Insert into transactioner (Fra_Konto, Trukketbeløb) values " +
                     "("+konto_nr2+"," + -beloeb+")";
 
             try {
