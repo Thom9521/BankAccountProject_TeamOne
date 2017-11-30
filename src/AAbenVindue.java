@@ -5,12 +5,20 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * vaelger hvad for en GUI vi vil aaben
+ */
 public class AAbenVindue {
 
     public AAbenVindue() {
     }
 
     // Metode til at kalde på kontonavnGUI vinduet
+
+    /**
+     *
+     * @param primaryStage soeger for vi aaben GUI som er valgt
+     */
     public void kontonavnGUI(Stage primaryStage) {
         try {
             // Indlaeser KontonavnGUI.fxml fil
@@ -34,6 +42,11 @@ public class AAbenVindue {
     }
 
     // Metode til at kalde på LoenKonto vinduet
+
+    /**
+     *
+     * @param primaryStage soeger for vi aaben GUI som er valgt
+     */
     public void loenKonto(Stage primaryStage) {
         try {
             // Indlaeser LoenKonto.fxml fil
@@ -57,6 +70,11 @@ public class AAbenVindue {
     }
 
     // Metode til at kalde paa bankraadgiver vinduet
+
+    /**
+     *
+     * @param primaryStage soeger for vi aaben GUI som er valgt
+     */
     public void bankraadgiver(Stage primaryStage) {
         try {
             // Indlaeser BankraadgiverScreen_System_2.fxml fil
