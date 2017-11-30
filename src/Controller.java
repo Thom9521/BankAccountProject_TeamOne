@@ -7,8 +7,8 @@ import javafx.scene.control.TextField;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
-/** Controller-klassen bruges til at sætte funktioner og metoder på vores GUI.
- * I det hele taget så gør Controller-klassen at vores GUI'er får nogle funktioner.
+/** Controller-klassen bruges til at sætte funktioner og metoder paa vores GUI.
+ * I det hele taget saa goer Controller-klassen at vores GUI'er faar nogle funktioner.
  */
 public class Controller {
 
@@ -17,30 +17,30 @@ public class Controller {
     @FXML
     private TextField txtBeloeb;
     @FXML
-    private MenuItem miAction1; //Overfør fra
+    private MenuItem miAction1; //Overfoer fra
     @FXML
-    private MenuItem miAction2; //Overfør fra
+    private MenuItem miAction2; //Overfoer fra
     @FXML
-    private MenuItem miAction3; //Overfør til
+    private MenuItem miAction3; //Overfoer til
     @FXML
-    private MenuItem miAction4; //Overfør til
+    private MenuItem miAction4; //Overfoer til
     @FXML
     private TableView tableView;
 
-    /** Når vores knapper fra vores GUI går ind og læser den her metoden, så vil de få en action.
-     * @param e er et objekt som metoden bruger til at kalde på andre metoden, som fx e.getSource()
+    /** Naar vores knapper fra vores GUI gaar ind og laeser den her metoden, saa vil de faa en action.
+     * @param e er et objekt som metoden bruger til at kalde paa andre metoden, som fx e.getSource()
      */
     @FXML
     private void handleButtonAction(javafx.event.ActionEvent e) {
-        int beloeb; //det indtastede beløb i textfield
+        int beloeb; //det indtastede beloeb i textfield
 
-        beloeb=Integer.parseInt(txtBeloeb.getText()); //Læser det beløb man har indtastet i beløbsfeltet
+        beloeb=Integer.parseInt(txtBeloeb.getText()); //Laeser det beloeb man har indtastet i beloebsfeltet
 
-        if(e.getSource() == btnGennemfoerOverfoersel) { //Køres hvis den valgte knap bliver valgt
+        if(e.getSource() == btnGennemfoerOverfoersel) { //Koeres hvis den valgte knap bliver valgt
             System.out.println("Knappen virker og der er sendt " + beloeb + " kr.");
 
-            JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Dit beløb på " + beloeb + "kr er " +
-                    "overført til den valgte konto."); //Pop-up vindue som sender en tekst
+            JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Dit beloeb paa " + beloeb + "kr er " +
+                    "overfoert til den valgte konto."); //Pop-up vindue som sender en tekst
 
 
         }

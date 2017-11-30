@@ -56,10 +56,10 @@ public class AAbenVindue {
         }
     }
 
-    // Metode til at kalde på bankrådgiver vinduet
-    public void bankrådgiver(Stage primaryStage) {
+    // Metode til at kalde paa bankraadgiver vinduet
+    public void bankraadgiver(Stage primaryStage) {
         try {
-            // Indlaeser BankrådgiverScreen_System_2.fxml fil
+            // Indlaeser BankraadgiverScreen_System_2.fxml fil
             Parent root = FXMLLoader.load(getClass().getResource("GUI/BankraadgiverScreen_System_2.fxml"));
 
             // Laver en scene med FXML filen

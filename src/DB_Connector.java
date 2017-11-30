@@ -3,7 +3,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * DB_Connector sørger for at vi kan connect til databasen fra IntelliJ. Ved hjælp af specifike Driver, url, user og
+ * DB_Connector soerger for at vi kan connect til databasen fra IntelliJ. Ved hjaelp af specifike Driver, url, user og
  * password er det muligt at connect til databasen.
  */
 public class DB_Connector {
@@ -20,9 +20,9 @@ public class DB_Connector {
     private static String password = "8305";
 
     /**
-     * Connect metoden tager brug af vores variabler som ses ovenfår. Disse kan ændres så hele metoden kan bruges igen
-     * men til en anden specifik database. Metoden tager brug af try and catch, så når vi kører programmet, så vil
-     * det ikke afslutte hvis der dukker en fejl op, men derimod komme med en fejl besked, så vi kan se hvor fejlen er.
+     * Connect metoden tager brug af vores variabler som ses ovenfaar. Disse kan aendres saa hele metoden kan bruges igen
+     * men til en anden specifik database. Metoden tager brug af try and catch, saa naar vi koerer programmet, saa vil
+     * det ikke afslutte hvis der dukker en fejl op, men derimod komme med en fejl besked, saa vi kan se hvor fejlen er.
      * @return retunerer vores connectionen.
      */
     public static Connection connect() {
@@ -50,7 +50,7 @@ public class DB_Connector {
         }
 
         /**
-         * En if metode så retunerer det ene eller det andet alt efter om con = null eller con != null.
+         * En if metode saa retunerer det ene eller det andet alt efter om con = null eller con != null.
          */
         if (con != null) {
             System.out.println("\n--Connection successful--");

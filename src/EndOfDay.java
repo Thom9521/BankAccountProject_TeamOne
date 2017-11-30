@@ -38,7 +38,7 @@ public class EndOfDay {
             stmt = con.createStatement();
             sql = "SELECT * FROM bruger";
             ResultSet rs = stmt.executeQuery(sql);
-            while (rs.next())   { // Indsætter rækkerne fra bruger tabelen ind i tekstfilen
+            while (rs.next())   { // Indsaetter raekkerne fra bruger tabelen ind i tekstfilen
                 hentetPerson_id = rs.getInt(1);
                 hentetFnavn = rs.getNString(2);
                 hentetLnavn = rs.getNString(3);
@@ -54,7 +54,7 @@ public class EndOfDay {
             stmt = con.createStatement();
             sql = "SELECT * FROM konto";
             rs = stmt.executeQuery(sql);
-            while (rs.next())   { // Indsætter rækkerne fra konto tabelen ind i tekstfilen
+            while (rs.next())   { // Indsaetter raekkerne fra konto tabelen ind i tekstfilen
                 hentetKonto_type = rs.getNString(1);
                 hentetReg_nr = rs.getInt(2);
                 hentetKonto_nr = rs.getInt(3);
@@ -67,14 +67,14 @@ public class EndOfDay {
             }
 
             output.println();
-            output.println("id \t\t Fra_Konto \t\t Trukketbeløb \t\t Til_kontoNr \t\t Indførtbeløb \t\t Timestamp");
+            output.println("id \t\t Fra_Konto \t\t Trukketbeloeb \t\t Til_kontoNr \t\t Indfoertbeloeb \t\t Timestamp");
             output.println("------------------------------------------------------------------------------------------------------------------------------------");
 
             // Henter transactioner tabelen
             stmt = con.createStatement();
             sql = "SELECT * FROM transactioner";
             rs = stmt.executeQuery(sql);
-            while (rs.next())   { // Indsætter rækkerne fra transactioner tabelen ind i tekstfilen
+            while (rs.next())   { // Indsaetter raekkerne fra transactioner tabelen ind i tekstfilen
                 hentetId = rs.getInt(1);
                 hentetFra_Konto = rs.getInt(2);
                 hentetTrukketbelob = rs.getDouble(3);
@@ -92,7 +92,7 @@ public class EndOfDay {
             stmt = con.createStatement();
             sql = "SELECT * FROM login";
             rs = stmt.executeQuery(sql);
-            while (rs.next())   { // Indsætter rækkerne fra login tabelen ind i tekstfilen
+            while (rs.next())   { // Indsaetter raekkerne fra login tabelen ind i tekstfilen
                 hentetUsername = rs.getNString(1);
                 hentetPassword = rs.getInt(2);
                 output.print(hentetUsername + "\t\t" + hentetPassword + "\n");

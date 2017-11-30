@@ -29,7 +29,7 @@ public class Main extends Application {
 
         //EndOfDay.backup();
 
-        // Afslutter programmet efter testen er kørt
+        // Afslutter programmet efter testen er koert
         System.exit(0);
     }
 
@@ -38,10 +38,10 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
 
         // Laver et objekt af klassen AAbenVindue
-        //AAbenVindue åbenVindue = new AAbenVindue();
+        //AAbenVindue aabenVindue = new AAbenVindue();
 
 
-        //åbenVindue.kontonavnGUI(primaryStage);
+        //aabenVindue.kontonavnGUI(primaryStage);
 
     }
 
