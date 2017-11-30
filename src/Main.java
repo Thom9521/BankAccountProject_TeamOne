@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+/**
+ * Main klassen er hvor vi koerer vores program. Her samler vi alt op fra de andre klassen.
+ */
 public class Main extends Application {
 
     public static void main(String[] args) throws FileNotFoundException, SQLException {

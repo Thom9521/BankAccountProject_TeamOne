@@ -1,5 +1,8 @@
 import java.sql.*;
 
+/**
+ * DB_Statements er hvor vi har metoder til vores database.
+ */
 public class DB_Statements {
 
     //  Declare a Statment
@@ -13,7 +16,10 @@ public class DB_Statements {
     //Declare a preparedstatement
     private static PreparedStatement pst = null;
 
-    //method to use a database
+    /**
+     * Metode til at bruge en database
+     * @param DB_Name Navnet på databasen som skal bruges. Indtastes når man koerer constructoren.
+     */
     public void useDB(String DB_Name) {
         //statement
         String query = "use " + DB_Name;
@@ -32,7 +38,12 @@ public class DB_Statements {
         }
     }
 
-    //method to check for user creadientials
+    /**
+     * Metode til at tjekke login når vi koerer vores login GUI.
+     * @param username Bruges til at indtaste sit username
+     * @param password Bruges til at indaste password
+     * @return Retunere check, som tjekker om de indtastede vaerdier findes i databasen.
+     */
     public Boolean checkLogin(String username, String password){
         boolean check = false;
 
