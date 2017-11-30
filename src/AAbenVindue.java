@@ -34,7 +34,7 @@ public class AAbenVindue {
     }
 
     // Metode til at kalde på LoenKonto vinduet
-    public void lønKonto(Stage primaryStage) {
+    public void loenKonto(Stage primaryStage) {
         try {
             // Indlaeser LoenKonto.fxml fil
             Parent root = FXMLLoader.load(getClass().getResource("GUI/LoenKonto.fxml"));
