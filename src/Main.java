@@ -13,27 +13,34 @@ import java.sql.SQLException;
  * Main klassen er hvor vi koerer vores program. Her samler vi alt op fra de andre klassen.
  */
 public class Main extends Application {
+    private static boolean er_login = false;
 
     public static void main(String[] args) throws FileNotFoundException, SQLException {
         //launch(args);
 
         System.out.println("Nice job Team One!");
 
-        //Login_GUI run = new Login_GUI();
+        Login_GUI run = new Login_GUI();
 
-        //Bruger.insertBrugerData();
+        if ( er_login == true){
+            System.out.println("denne kører kun hvis du er logget ind.");
 
-        //Konto.insertKontoData();
+            Bruger.insertBrugerData();
 
-        //Konto saldo = new Konto();
-        //saldo.insertSaldoData();
+            Konto.insertKontoData();
 
-        //saldo.insertMoney();
+            Konto saldo = new Konto();
+            saldo.insertSaldoData();
 
-        EndOfDay.backup();
+            saldo.insertMoney();
 
-        // Afslutter programmet efter testen er koert
-        System.exit(0);
+            EndOfDay.backup();
+            // Afslutter programmet efter testen er koert
+            System.exit(0);
+        }
+
+
+
     }
 
 
