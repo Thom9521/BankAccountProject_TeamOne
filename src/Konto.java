@@ -143,7 +143,7 @@ public class Konto {
         //String query ="Update konto set saldo = " + beloeb + " where reg_nr = " + reg_nr;
         String query = "UPDATE konto set saldo = saldo + " + beloeb + " where konto_nr = " + konto_nr;
         String query2 = "UPDATE konto set saldo = saldo - " + beloeb + " where konto_nr = " + konto_nr2;
-        String query3 = "Insert into transactioner (Fra_Konto, Trukketbeloeb, Til_kontoNr, Indfoertbeloeb) values " +
+        String query3 = "Insert into transactioner (Fra_Konto, Trukketbeløb, Til_kontoNr, Indførtbeløb) values " +
                 "("+konto_nr2+"," + -beloeb+","+ konto_nr+","+ beloeb+")";
 
 
