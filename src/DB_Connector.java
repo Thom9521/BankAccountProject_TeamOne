@@ -17,7 +17,7 @@ public class DB_Connector {
     //  User name
     private static String user = "root";
     // Password
-    private static String password = "8305";
+    private static String password = "xmeto123";
 
     /**
      * Connect metoden tager brug af vores variabler som ses ovenfaar. Disse kan aendres saa hele metoden kan bruges igen

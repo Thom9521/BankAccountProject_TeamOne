@@ -17,7 +17,7 @@ public class AAbenVindue {
 
     /**
      *
-     * @param primaryStage soeger for vi aaben GUI som er valgt
+     * @param primaryStage soeger for vi aabner GUI som er valgt
      */
     public void kontonavnGUI(Stage primaryStage) {
         try {

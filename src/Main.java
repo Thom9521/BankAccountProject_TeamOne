@@ -22,16 +22,20 @@ public class Main extends Application {
         System.out.println("Nice job Team One!");
 
         Login_GUI run = new Login_GUI();
+        DB_Statements test = new DB_Statements();
+
+
 
         // nyt x DB_Statements objrkt
 
         // er_login = x.checkLogin(String username, String password)
 
+        String username = "Thomas";
+        String password = "12345678";
 
+        if ( test.checkLogin(username, password)){
 
-        if ( er_login == true){
-
-            System.out.println("denne kører kun hvis du er logget ind.");
+            System.out.println("Dette kører kun hvis du er logget ind.");
 
             Bruger.insertBrugerData();
 
@@ -53,7 +57,7 @@ public class Main extends Application {
 
 
     @Override
-    public void start(Stage primaryStage) {
+   public void start(Stage primaryStage) {
 
         // Laver et objekt af klassen AAbenVindue
         //AAbenVindue aabenVindue = new AAbenVindue();
