@@ -33,7 +33,7 @@ public class Login_GUI {
         //Creates the frame/window
         frame = new JFrame("Login Window");
         frame.setBounds(500, 500, 450, 300);
-        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+        //frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE); //Gør at programmet stopper med at køre på X - knappen
         frame.getContentPane().setLayout(null);
 
         //Create user field
