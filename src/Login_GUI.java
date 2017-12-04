@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.application.Platform;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -32,7 +33,7 @@ public class Login_GUI {
     private void initialize() {
         //Creates the frame/window
         frame = new JFrame("Login Window");
-        frame.setBounds(500, 500, 450, 300);
+        frame.setBounds(500, 300, 450, 300);
         //frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE); //Gør at programmet stopper med at køre på X - knappen
         frame.getContentPane().setLayout(null);
 
@@ -63,6 +64,9 @@ public class Login_GUI {
         btnConnect.setBounds(148, 172, 117, 29);
         frame.getContentPane().add(btnConnect);
 
+
+
+
         //Create button action
         btnConnect.addActionListener(new ActionListener() {
             @Override
@@ -75,6 +79,8 @@ public class Login_GUI {
                     String password = new String(passwordField.getPassword());
                     if (stmts.checkLogin(username, password)) {
                         JOptionPane.showMessageDialog(null, "User found\nAccess granted");
+                        frame.setVisible(false);
+
                     } else {
                         JOptionPane.showMessageDialog(null, "User or password is incorrect" +
                                 "\nAccess denied");
