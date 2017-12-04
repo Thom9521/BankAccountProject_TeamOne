@@ -20,6 +20,8 @@ public class Bruger {
      * @param adresse soeger for vi skal skrive et efternavn
      * @throws SQLException fjenere fejl hvis der er nogen
      **/
+
+
     // Laver en bruger med person_id, fornavn, efternavn og adresse
     public static void lavBruger(int Person_id, String fnavn, String lnavn, String adresse) throws SQLException {
         /** // Initialiserer varibler der skal bruges
