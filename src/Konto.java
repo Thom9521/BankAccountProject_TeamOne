@@ -14,17 +14,17 @@ public class Konto {
     static Statement stmt = null;
 
 
-
     /**
      * Metode til at lave kontoer med konto_type, reg_nr, konto_nr, rentesats, saldo, overtraeksgebyr og id
-     * @param Konto_type Kontotype, enten opsparingskonto eller loenkonto
-     * @param reg_nr Registreingsnummer
-     * @param konto_nr Kontonummer
-     * @param rentesats Rentesats
-     * @param saldo Saldo
+     *
+     * @param Konto_type      Kontotype, enten opsparingskonto eller loenkonto
+     * @param reg_nr          Registreingsnummer
+     * @param konto_nr        Kontonummer
+     * @param rentesats       Rentesats
+     * @param saldo           Saldo
      * @param overtraeksgebyr Hvor meget overtraek der maa vaere paa kontoen
-     * @param overtraek Om der maa overtraekkes eller ej.
-     * @param id Hvad id kontoen har.
+     * @param overtraek       Om der maa overtraekkes eller ej.
+     * @param id              Hvad id kontoen har.
      * @throws SQLException Bruges til at ignorere fejlene.
      */
     public static void lavKonto(String Konto_type, int reg_nr, int konto_nr, double rentesats,
@@ -58,6 +58,7 @@ public class Konto {
 
     /**
      * Metode til at lave flere forskellige kontoer.
+     *
      * @throws SQLException Ignorerer fejlene
      */
     public static void insertKontoData() throws SQLException {
@@ -85,35 +86,51 @@ public class Konto {
      * Metode til at indsaette et nyt beloeb på et bestemt reg_nr
      * Indeholder if-metoder, som er med til at vaelge om man vil indsaette penge eller traekke penge fra ens konto
      */
-    public void insertMoney() {
+    public void insertMoney() throws SQLException {
         Scanner input = new Scanner(System.in);
         System.out.println("\n1: Indsaet penge.\n2: Traek penge.\nSkriv 1 eller 2, efter hvad du vil.");
         int userinput = input.nextInt();
-        if (userinput == 1){
+        if (userinput == 1) {
             System.out.println("\nIndtast beløb som skal indsaettes:");
             int beloeb = input.nextInt();
             System.out.println("Indtast reg. nr og konto nr som skal have overført penge:");
             int reg_nr = input.nextInt();
             int konto_nr = input.nextInt();
-            String query = "UPDATE konto set saldo = saldo + " + beloeb + " where konto_nr = " + konto_nr;
-            String query3 = "Insert into transactioner (Til_kontoNr, Indførtbeløb) values " +
-                    "("+ konto_nr+","+ beloeb+")";
-
-            try {
-                //Connect
-                stmt = con.createStatement();
-                //execute query
-                stmt.executeUpdate(query);
-                stmt.executeUpdate(query3);
 
 
-                System.out.println("\n--Overført penge: " + beloeb + "kr til reg. nummer: " + reg_nr +
-                        " og kontonummer: " + konto_nr + "--");
-                System.out.println("\n--Lagt ind i transaktionslog--");
-            } catch (SQLException ex) {
-                //Handle exceptions
-                System.out.println("\n--Query did not execute--");
-                ex.printStackTrace();
+            String sql;
+            int hentet_saldo = 0;
+
+            // Henter et reg_nr og konto_nr fra konto tabelen hvor reg_nr er reg_nr variablen og konto_nr er konto_nr variablen
+            stmt = con.createStatement();
+            sql = "SELECT saldo FROM konto WHERE reg_nr = " + reg_nr + " AND konto_nr = " + konto_nr;
+            ResultSet rs = stmt.executeQuery(sql);
+            if (rs.next()) { // Indsaetter reg_nr i hentet_reg_nr og konto_nr i hentet_konto_nr hvis den har hentet det
+                hentet_saldo = rs.getInt("saldo");
+            }
+            if (hentet_saldo < beloeb) {
+                System.out.println("Der er ikke nok penge på kontoen.");
+            } else {
+                String query = "UPDATE konto set saldo = saldo + " + beloeb + " where konto_nr = " + konto_nr;
+                String query3 = "Insert into transactioner (Til_kontoNr, Indførtbeløb) values " +
+                        "(" + konto_nr + "," + beloeb + ")";
+
+                try {
+                    //Connect
+                    stmt = con.createStatement();
+                    //execute query
+                    stmt.executeUpdate(query);
+                    stmt.executeUpdate(query3);
+
+
+                    System.out.println("\n--Overført penge: " + beloeb + "kr til reg. nummer: " + reg_nr +
+                            " og kontonummer: " + konto_nr + "--");
+                    System.out.println("\n--Lagt ind i transaktionslog--");
+                } catch (SQLException ex) {
+                    //Handle exceptions
+                    System.out.println("\n--Query did not execute--");
+                    ex.printStackTrace();
+                }
             }
         } else {
             System.out.println("\nIndtast beloeb som skal traekkes:");
@@ -121,37 +138,51 @@ public class Konto {
             System.out.println("Indtast reg. nr og konto nr som skal have trukket penge:");
             int reg_nr2 = input.nextInt();
             int konto_nr2 = input.nextInt();
-            String query2 = "UPDATE konto set saldo = saldo - " + beloeb + " where konto_nr = " + konto_nr2;
-            String query3 = "Insert into transactioner (Fra_Konto, Trukketbeløb) values " +
-                    "("+konto_nr2+"," + -beloeb+")";
 
-            try {
-                //Connect
-                stmt = con.createStatement();
-                //execute query
+            String sql;
+            int hentet_saldo = 0;
 
-                stmt.executeUpdate(query2);
-                stmt.executeUpdate(query3);
-
-
-
-                System.out.println("\n--Trukket penge: " + beloeb + "kr fra reg. nummer: " + reg_nr2 +
-                        " og kontonummer: " + konto_nr2 + "--");
-                System.out.println("\n--Lagt ind i transaktionslog--");
-
-            } catch (SQLException ex) {
-                //Handle exceptions
-                System.out.println("\n--Query did not execute--");
-                ex.printStackTrace();
+            // Henter et reg_nr og konto_nr fra konto tabelen hvor reg_nr er reg_nr variablen og konto_nr er konto_nr variablen
+            stmt = con.createStatement();
+            sql = "SELECT saldo FROM konto WHERE reg_nr = " + reg_nr2 + " AND konto_nr = " + konto_nr2;
+            ResultSet rs = stmt.executeQuery(sql);
+            if (rs.next()) { // Indsaetter reg_nr i hentet_reg_nr og konto_nr i hentet_konto_nr hvis den har hentet det
+                hentet_saldo = rs.getInt("saldo");
             }
-        }
+            if (hentet_saldo < beloeb) {
+                System.out.println("Der er ikke nok penge på kontoen.");
+            } else {
+                String query2 = "UPDATE konto set saldo = saldo - " + beloeb + " where konto_nr = " + konto_nr2;
+                String query3 = "Insert into transactioner (Fra_Konto, Trukketbeløb) values " +
+                        "(" + konto_nr2 + "," + -beloeb + ")";
 
+                try {
+                    //Connect
+                    stmt = con.createStatement();
+                    //execute query
+
+                    stmt.executeUpdate(query2);
+                    stmt.executeUpdate(query3);
+
+
+                    System.out.println("\n--Trukket penge: " + beloeb + "kr fra reg. nummer: " + reg_nr2 +
+                            " og kontonummer: " + konto_nr2 + "--");
+                    System.out.println("\n--Lagt ind i transaktionslog--");
+
+                } catch (SQLException ex) {
+                    //Handle exceptions
+                    System.out.println("\n--Query did not execute--");
+                    ex.printStackTrace();
+                }
+            }
+
+        }
     }
 
     /**
      * Overfoere penge fra konto til konto
      */
-    public void insertSaldoData() {
+    public void insertSaldoData() throws SQLException {
         Scanner input = new Scanner(System.in);
         System.out.println("\nIndtast overfoerselsbeloeb:");
         int beloeb = input.nextInt();
@@ -161,34 +192,49 @@ public class Konto {
         System.out.println("Indtast reg. nr og konto nr som skal have trukket penge:");
         int reg_nr2 = input.nextInt();
         int konto_nr2 = input.nextInt();
+        String sql;
+        int hentet_saldo = 0;
+
+        // Henter et reg_nr og konto_nr fra konto tabelen hvor reg_nr er reg_nr variablen og konto_nr er konto_nr variablen
+        stmt = con.createStatement();
+        sql = "SELECT saldo FROM konto WHERE reg_nr = " + reg_nr2 + " AND konto_nr = " + konto_nr2;
+        ResultSet rs = stmt.executeQuery(sql);
+        if (rs.next()) { // Indsaetter reg_nr i hentet_reg_nr og konto_nr i hentet_konto_nr hvis den har hentet det
+            hentet_saldo = rs.getInt("saldo");
+        }
+        if (hentet_saldo < beloeb) {
+            System.out.println("Der er ikke nok penge på kontoen.");
+        } else {
 
 
-        //SQL query
-        //String query ="Update konto set saldo = " + beloeb + " where reg_nr = " + reg_nr;
-        String query = "UPDATE konto set saldo = saldo + " + beloeb + " where konto_nr = " + konto_nr;
-        String query2 = "UPDATE konto set saldo = saldo - " + beloeb + " where konto_nr = " + konto_nr2;
-        String query3 = "Insert into transactioner (Fra_Konto, Trukketbeløb, Til_kontoNr, Indførtbeløb) values " +
-                "("+konto_nr2+"," + -beloeb+","+ konto_nr+","+ beloeb+")";
+            //SQL query
+            //String query ="Update konto set saldo = " + beloeb + " where reg_nr = " + reg_nr;
+            String query = "UPDATE konto set saldo = saldo + " + beloeb + " where konto_nr = " + konto_nr;
+            String query2 = "UPDATE konto set saldo = saldo - " + beloeb + " where konto_nr = " + konto_nr2;
+            String query3 = "Insert into transactioner (Fra_Konto, Trukketbeløb, Til_kontoNr, Indførtbeløb) values " +
+                    "(" + konto_nr2 + "," + -beloeb + "," + konto_nr + "," + beloeb + ")";
 
 
-        try {
-            //Connect
-            stmt = con.createStatement();
-            //execute query
-            stmt.executeUpdate(query);
-            stmt.executeUpdate(query2);
-            stmt.executeUpdate(query3);
+            try {
+                //Connect
+                stmt = con.createStatement();
+                //execute query
+                stmt.executeUpdate(query);
+                stmt.executeUpdate(query2);
+                stmt.executeUpdate(query3);
 
-            System.out.println("\n--Overført penge: " + beloeb + "kr til reg. nummer: " + reg_nr +
-                    " og kontonummer: " + konto_nr + "--");
-            System.out.println("\n--Trukket penge: " + beloeb + "kr fra reg. nummer: " + reg_nr2 +
-                    " og kontonummer: " + konto_nr2 + "--");
-            System.out.println("\n--Lagt ind i transaktionslog--");
-        } catch (SQLException ex) {
-            //Handle exceptions
-            System.out.println("\n--Query did not execute--");
-            ex.printStackTrace();
+                System.out.println("\n--Overført penge: " + beloeb + "kr til reg. nummer: " + reg_nr +
+                        " og kontonummer: " + konto_nr + "--");
+                System.out.println("\n--Trukket penge: " + beloeb + "kr fra reg. nummer: " + reg_nr2 +
+                        " og kontonummer: " + konto_nr2 + "--");
+                System.out.println("\n--Lagt ind i transaktionslog--");
+            } catch (SQLException ex) {
+                //Handle exceptions
+                System.out.println("\n--Query did not execute--");
+                ex.printStackTrace();
+            }
         }
     }
-
 }
+
+

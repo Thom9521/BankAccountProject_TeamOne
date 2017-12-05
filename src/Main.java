@@ -25,16 +25,10 @@ public class Main extends Application {
         DB_Statements test = new DB_Statements();
 
 
-
-        // nyt x DB_Statements objrkt
-
-        // er_login = x.checkLogin(String username, String password)
-
         String username = "Thomas";
         String password = "12345678";
 
         if ( test.checkLogin(username, password)){
-
             System.out.println("Dette kører kun hvis du er logget ind.");
 
             Bruger.insertBrugerData();
@@ -42,11 +36,12 @@ public class Main extends Application {
             Konto.insertKontoData();
 
             Konto saldo = new Konto();
+
             saldo.insertSaldoData();
 
-            saldo.insertMoney();
+            //saldo.insertMoney();
 
-            EndOfDay.backup();
+            //EndOfDay.backup();
             // Afslutter programmet efter testen er koert
             System.exit(0);
         }
