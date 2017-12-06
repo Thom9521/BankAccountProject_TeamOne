@@ -27,6 +27,9 @@ public class Konto {
      * @param id              Hvad id kontoen har.
      * @throws SQLException Bruges til at ignorere fejlene.
      */
+
+
+
     public static void lavKonto(String Konto_type, int reg_nr, int konto_nr, double rentesats,
                                 int saldo, int overtraeksgebyr, String overtraek, int id) throws SQLException {
         // Initialiserer varibler der skal bruges

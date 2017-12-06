@@ -12,6 +12,8 @@ public class Bruger {
     static Connection con = DB_Connector.connect();
     static Statement stmt = null;
 
+
+
     /** Vi erklaer vores info om vores bruger vi vil oprettet
      * hvor vi vaelger hvilken datatyper det skal vaere.
      * @param Person_id soeger for vi skal lave et id
@@ -70,4 +72,5 @@ public class Bruger {
         lavBruger( 5,"Burhan", "Öztürk", "Maglemølle");
 
     }
+
 }

@@ -55,7 +55,7 @@ public class DB_Statements {
             while(rs.next()){
                 check = true;
                 System.out.println("\n--Du er nu logget ind--");
-
+                
             }
         } catch (SQLException e) {
             System.out.println("\n--Afvist");
