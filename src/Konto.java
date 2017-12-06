@@ -98,19 +98,7 @@ public class Konto {
             int konto_nr = input.nextInt();
 
 
-            String sql;
-            int hentet_saldo = 0;
 
-            // Henter et reg_nr og konto_nr fra konto tabelen hvor reg_nr er reg_nr variablen og konto_nr er konto_nr variablen
-            stmt = con.createStatement();
-            sql = "SELECT saldo FROM konto WHERE reg_nr = " + reg_nr + " AND konto_nr = " + konto_nr;
-            ResultSet rs = stmt.executeQuery(sql);
-            if (rs.next()) { // Indsaetter reg_nr i hentet_reg_nr og konto_nr i hentet_konto_nr hvis den har hentet det
-                hentet_saldo = rs.getInt("saldo");
-            }
-            if (hentet_saldo < beloeb) {
-                System.out.println("Der er ikke nok penge på kontoen.");
-            } else {
                 String query = "UPDATE konto set saldo = saldo + " + beloeb + " where konto_nr = " + konto_nr;
                 String query3 = "Insert into transactioner (Til_kontoNr, Indførtbeløb) values " +
                         "(" + konto_nr + "," + beloeb + ")";
@@ -132,7 +120,7 @@ public class Konto {
                     ex.printStackTrace();
                 }
             }
-        } else {
+         else {
             System.out.println("\nIndtast beloeb som skal traekkes:");
             int beloeb = input.nextInt();
             System.out.println("Indtast reg. nr og konto nr som skal have trukket penge:");
@@ -142,14 +130,14 @@ public class Konto {
             String sql;
             int hentet_saldo = 0;
 
-            // Henter et reg_nr og konto_nr fra konto tabelen hvor reg_nr er reg_nr variablen og konto_nr er konto_nr variablen
+            // Henter saldoen fra konto tabelen hvor reg_nr er reg_nr variablen og konto_nr er konto_nr variablen
             stmt = con.createStatement();
             sql = "SELECT saldo FROM konto WHERE reg_nr = " + reg_nr2 + " AND konto_nr = " + konto_nr2;
             ResultSet rs = stmt.executeQuery(sql);
-            if (rs.next()) { // Indsaetter reg_nr i hentet_reg_nr og konto_nr i hentet_konto_nr hvis den har hentet det
+            if (rs.next()) { // Indsaetter saldo i hentet_saldo, hvis det er blevet hentet.
                 hentet_saldo = rs.getInt("saldo");
             }
-            if (hentet_saldo < beloeb) {
+            if (hentet_saldo < beloeb) { //Koerer hvis der er nok penge på kontoen
                 System.out.println("Der er ikke nok penge på kontoen.");
             } else {
                 String query2 = "UPDATE konto set saldo = saldo - " + beloeb + " where konto_nr = " + konto_nr2;
@@ -195,14 +183,14 @@ public class Konto {
         String sql;
         int hentet_saldo = 0;
 
-        // Henter et reg_nr og konto_nr fra konto tabelen hvor reg_nr er reg_nr variablen og konto_nr er konto_nr variablen
+        // Henter saldoen fra konto tabelen hvor reg_nr er reg_nr variablen og konto_nr er konto_nr variablen
         stmt = con.createStatement();
         sql = "SELECT saldo FROM konto WHERE reg_nr = " + reg_nr2 + " AND konto_nr = " + konto_nr2;
         ResultSet rs = stmt.executeQuery(sql);
         if (rs.next()) { // Indsaetter reg_nr i hentet_reg_nr og konto_nr i hentet_konto_nr hvis den har hentet det
             hentet_saldo = rs.getInt("saldo");
         }
-        if (hentet_saldo < beloeb) {
+        if (hentet_saldo < beloeb) { //Koerer hvis der er nok penge på kontoen
             System.out.println("Der er ikke nok penge på kontoen.");
         } else {
 
