@@ -81,6 +81,21 @@ public class Login_GUI {
                         JOptionPane.showMessageDialog(null, "User found\nAccess granted");
                         frame.setVisible(false);
 
+                        Bruger.insertBrugerData();
+
+                        Konto.insertKontoData();
+
+                        Konto saldo = new Konto();
+
+                        saldo.insertSaldoData();
+
+                        saldo.insertMoney();
+
+                        EndOfDay.backup();
+                        // Afslutter programmet efter testen er koert
+                        System.exit(0);
+
+
                     } else {
                         JOptionPane.showMessageDialog(null, "User or password is incorrect" +
                                 "\nAccess denied");
@@ -88,6 +103,8 @@ public class Login_GUI {
                 } catch (Exception e1) {
                     JOptionPane.showMessageDialog(null, e1);
                 }
+
+
             }
         });
 
