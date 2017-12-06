@@ -6,11 +6,9 @@ import java.sql.SQLException;
  */
 public class Main {
 
-    private static boolean er_login = false;
 
     public static void main(String[] args) throws FileNotFoundException, SQLException {
         //launch(args);
-
         System.out.println("Nice job Team One!");
 
         Login_GUI run = new Login_GUI();

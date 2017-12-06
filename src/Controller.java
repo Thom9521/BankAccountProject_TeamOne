@@ -25,7 +25,7 @@ public class Controller {
     @FXML
     private MenuItem miAction4; //Overfoer til
     @FXML
-    private TableView tableView;
+    private TableView tableView; 
 
     /** Naar vores knapper fra vores GUI gaar ind og laeser den her metoden, saa vil de faa en action.
      * @param e er et objekt som metoden bruger til at kalde paa andre metoden, som fx e.getSource()
